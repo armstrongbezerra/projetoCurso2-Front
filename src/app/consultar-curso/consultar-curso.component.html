@@ -1,0 +1,63 @@
+<form [formGroup]="formPeriodo" (ngSubmit)="onSubmit()" >
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <label>Descrição do Assunto</label>
+      <input type="text" class="form-control" formControlName="descricao"/>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="">Data de Inicio</label>
+    <input type="date" class="form-control" formControlName="dtInicio" />
+  </div>
+  <div class="col-md-3">
+    <label for="">Data de Término</label>
+    <input type="date" class="form-control" formControlName="dtTermino"/>
+  </div>
+  <div class="row mb-3" style="margin-top: 1%">
+    <div class="col-md-12">
+      <input type="submit" [disabled]="!formPeriodo.valid" class="btn btn-sm btn-primary" value="Consultar"/>
+      <button class="btn btn-sm btn-dark" onclick="window.location.reload()">Voltar Consulta</button>
+  </div>
+  </div>
+</form>
+
+<table class="table table-hover table-sm">
+  <thead>
+    <br>
+    <tr>
+      <td>Descrição do Assunto</td>
+      <td>Data Início</td>
+      <td>Data Término</td>
+      <td>Quantidade de Alunos</td>
+      <td>Categoria</td>
+      <td>Editar  /  Excluir</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of curso">
+      <td>{{c.descricao}} </td>
+      <td>{{c.dtInicio | date: "dd/MM/yyyy"}}</td>
+      <td>{{c.dtTermino | date: "dd/MM/yyyy"}}</td>
+      <td>{{c.qtdAluno}}</td>
+      <td>{{c.categoria}}</td>
+      <td>
+       <button class="btn btn-sm btn-secondary" [routerLink]="['/editar-curso', c.idCurso]">Editar</button>
+       &nbsp;
+       <button class="btn btn-sm btn-danger" (click)="excluir(c.idCurso)">Excluir</button>
+      </td>
+    </tr>
+    <br>
+    <button class="btn btn-sm btn-success" [routerLink]="['/cadastrar-curso']">Adicionar</button>
+    <button class="btn btn-sm btn-dark"  [routerLink]="['/home']">Voltar</button>
+  </tbody>
+  <tfoot>
+    <br>
+    <tr>
+      <td colspan="6">Total de Cursos Registrados : {{curso.length}} </td>
+    </tr>
+  </tfoot>
+</table>
+
+
+
+

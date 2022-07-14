@@ -1,0 +1,61 @@
+<h5>Edição de Cruso</h5>
+
+<form [formGroup]="formEditar" (ngSubmit)="onSubmit()">
+  <div *ngIf="mensagem" class="mb-3 alert alert-primary">
+    <strong>{{mensagem}}</strong>
+  </div>
+  <input type="hidden" formControlName="idCurso" />
+  <div class="row g-3">
+    <div class="col">
+      <label>Descrição do Assunto</label>
+      <input type="text" class="form-control" formControlName="descricao" placeholder="Digite o Nome do Curso" />
+      <div class="text-danger" *ngIf="form.descricao.touched && form.descricao.invalid">
+        <span *ngIf="form.descricao.errors.required">Por favor, informe o nome do curso*</span>
+      </div>
+    </div>
+    <div class="col">
+      <label>Data de Inicio</label>
+      <input type="date" class="form-control" formControlName="dtInicio"  />
+      <div class="text-danger" *ngIf="form.dtInicio.touched && form.dtInicio.invalid">
+        <span *ngIf="form.dtInicio.errors.required">Por favor, insira a data de início*</span>
+    </div>
+    </div>
+     <div class="col">
+      <label>Data do Término</label>
+      <input type="date" class="form-control" formControlName="dtTermino" />
+      <div class="text-danger" *ngIf="form.dtTermino.touched && form.dtTermino.invalid">
+        <span *ngIf="form.dtTermino.errors.required">Por favor, a data do término*</span>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row mb-3">
+    <div class="col-md-3">
+    <label>Quantidade de Aluno</label>
+    <input type="number" class="form-control" formControlName="qtdAluno"/>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <label>Categoria</label>
+      <select class="form-select form-select-sm" aria-label=".form-select-sm categoria" class="form-control" formControlName="categoria">
+        <option value="categoria">Multiplataforma</option>
+        <option value="categoria">Banco de dados</option>
+        <option value="categoria">Metodologia</option>
+        <option value="categoria">Comportamento</option>
+        <option value="categoria">Comunicação</option>
+      </select>
+      <div class="text-danger" *ngIf="form.categoria.touched && form.categoria.invalid">
+        <span *ngIf="form.categoria.errors.required">Por favor, Selecione a Categoria*</span>
+      </div>
+  </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <input type="submit" [disabled]="!formEditar.valid"
+      class="btn btn-success" value="Editar Cadastro"/>
+      <input class="btn btn-warning" class="btn btn-outline-warning" type="reset" value="Limpar"  />
+      <input class="btn btn-danger" class="btn btn-outline-danger" onclick="window.location.href = 'consultar-curso'"   value="Voltar"/>
+    </div>
+  </div>
+</form>

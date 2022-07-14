@@ -1,0 +1,19 @@
+/*
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+
+
+
+*margin{
+  margin: 25px;
+  padding: 10x;
+}
+
+body {
+  background-image: url("/assets/imagens/img cast 1.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: 0.90;
+}
